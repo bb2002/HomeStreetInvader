@@ -23,5 +23,6 @@ public:
 	static bool GetKeyDown(int vk);
 	static bool GetKeyPressed(int vk);
 	static bool GetKeyUp(int vk);
+	static bool IsAnyKeyPressed();
 };
 

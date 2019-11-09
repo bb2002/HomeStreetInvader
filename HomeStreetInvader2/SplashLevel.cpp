@@ -12,7 +12,6 @@ SplashLevel::SplashLevel()
 
 void SplashLevel::Initialize()
 {
-	
 	Logo = (HomeStreetInvaderLogo*)PushBackGameObject(new HomeStreetInvaderLogo());
 	Logo->transform->SetPosition(640, 384);
 }

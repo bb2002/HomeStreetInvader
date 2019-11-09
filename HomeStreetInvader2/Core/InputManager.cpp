@@ -55,6 +55,8 @@ int InputManager::GetMyKeyState(int vk)
 	return 0;	//눌리지 않았을 경우
 }
 
+
+
 bool InputManager::GetKeyDown(int vk)
 {
 	return (!lkey[vk] && rkey[vk])?true:false;
@@ -68,4 +70,13 @@ bool InputManager::GetKeyPressed(int vk)
 bool InputManager::GetKeyUp(int vk)
 {
 	return (lkey[vk] && !rkey[vk])?true:false;
+}
+
+bool InputManager::IsAnyKeyPressed()
+{
+	for (int i = 0; i < 256; ++i) {
+		if (!lkey[i] && rkey[i]) return true;
+	}
+
+	return false;
 }

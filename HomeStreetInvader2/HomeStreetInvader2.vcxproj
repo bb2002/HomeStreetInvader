@@ -42,7 +42,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -138,9 +138,12 @@
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Transform.cpp" />
     <ClCompile Include="Core\WinApp.cpp" />
+    <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="HomeStreetInvader.cpp" />
     <ClCompile Include="HomeStreetInvaderLogo.cpp" />
+    <ClCompile Include="Invader.cpp" />
     <ClCompile Include="LobbyLevel.cpp" />
+    <ClCompile Include="PressAnyKeyToStart.cpp" />
     <ClCompile Include="SplashLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,8 +171,11 @@
     <ClInclude Include="Core\TimeManager.h" />
     <ClInclude Include="Core\Transform.h" />
     <ClInclude Include="Core\WinApp.h" />
+    <ClInclude Include="GameLevel.h" />
     <ClInclude Include="HomeStreetInvaderLogo.h" />
+    <ClInclude Include="Invader.h" />
     <ClInclude Include="LobbyLevel.h" />
+    <ClInclude Include="PressAnyKeyToStart.h" />
     <ClInclude Include="SplashLevel.h" />
   </ItemGroup>
   <ItemGroup>

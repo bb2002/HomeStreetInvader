@@ -102,6 +102,15 @@
     <ClCompile Include="BackgroundActor.cpp">
       <Filter>소스 파일\HomeStreetInvader</Filter>
     </ClCompile>
+    <ClCompile Include="Invader.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
+    <ClCompile Include="PressAnyKeyToStart.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLevel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\AABBCollider.h">
@@ -183,6 +192,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Invader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="PressAnyKeyToStart.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLevel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
