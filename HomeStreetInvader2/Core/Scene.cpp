@@ -2,9 +2,12 @@
 #include "Scene.h"
 #include "Framework.h"
 #include <iostream>
+#include <chrono>
+
 
 Scene* Scene::currentScene;
 Scene* Scene::nextScene;
+using namespace std::chrono;
 
 Scene::Scene(): resourceManager(new ResourceManager())	//동적할당
 {
@@ -49,12 +52,20 @@ Scene& Scene::GetCurrentScene()
 	return *Scene::currentScene;
 }
 
+auto CurrentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 void Scene::Update()
 {
+	auto Now = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 	//모든 오브젝트의 Update를 수행
-	for (auto& i : gameObjectList)	
-		if(i->GetActive())
+	for (auto& i : gameObjectList) {
+		if (i->GetActive()) {
 			i->Update();
+			i->UpdateWithDelta((Now - CurrentTime).count());
+		}
+	}
+
+	UpdateWithDeltaSecond((Now - CurrentTime).count());
+	CurrentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 
 	//LateUpdate 수행
 	for (auto& i : gameObjectList)
@@ -83,6 +94,10 @@ void Scene::Update()
 		i = destroyedObjectList.begin();
 	}
 	destroyedObjectList.clear();
+}
+
+void Scene::UpdateWithDeltaSecond(float DeltaSec)
+{
 }
 
 void Scene::Render()

@@ -109,7 +109,16 @@
       <Filter>소스 파일\HomeStreetInvader</Filter>
     </ClCompile>
     <ClCompile Include="GameLevel.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
+    <ClCompile Include="NepPlayer.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
+    <ClCompile Include="Pencil.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBook.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +210,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="GameLevel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="NepPlayer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBook.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Pencil.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

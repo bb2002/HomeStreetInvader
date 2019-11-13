@@ -11,7 +11,7 @@ public:
 public:
 	virtual void Initialize();
 
-	void Update() override;
+	void UpdateWithDeltaSecond(float DeltaSec) override;
 
 	~SplashLevel();
 

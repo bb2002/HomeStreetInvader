@@ -22,11 +22,22 @@ public:
 			return L"./Resources/Invader1.png";
 		case EInvaderType::E_INVADER_2:
 			return L"./Resources/Invader2.png";
-		case EInvaderType::E_INVADER_3:
+		case EInvaderType::E_INVADER_3: default:
 			return L"./Resources/Invader3.png";
 		}
 	}
 
+	void StartInvader();
+
+	void Update() override;
+
 	~Invader();
+
+private:
+	bool bIsInvaderRunning = false;
+
+	int InvaderMoveVector = 0;
+
+	int InvaderMovedSize = 0;
 };
 

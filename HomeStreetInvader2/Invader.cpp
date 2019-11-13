@@ -16,6 +16,23 @@ void Invader::Initialize()
 
 
 
+void Invader::StartInvader()
+{
+
+}
+
+void Invader::Update()
+{
+	if (InvaderMovedSize < -120 || InvaderMovedSize > 120) {
+		InvaderMoveVector *= -1;
+	}
+
+	Vector2 vec = transform->position;
+	vec.x += InvaderMoveVector;
+	InvaderMovedSize += InvaderMoveVector;
+	transform->SetPosition(vec.x, vec.y);
+}
+
 Invader::~Invader()
 {
 }

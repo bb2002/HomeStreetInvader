@@ -143,8 +143,11 @@
     <ClCompile Include="HomeStreetInvaderLogo.cpp" />
     <ClCompile Include="Invader.cpp" />
     <ClCompile Include="LobbyLevel.cpp" />
+    <ClCompile Include="NepPlayer.cpp" />
+    <ClCompile Include="Pencil.cpp" />
     <ClCompile Include="PressAnyKeyToStart.cpp" />
     <ClCompile Include="SplashLevel.cpp" />
+    <ClCompile Include="TextBook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundActor.h" />
@@ -175,8 +178,11 @@
     <ClInclude Include="HomeStreetInvaderLogo.h" />
     <ClInclude Include="Invader.h" />
     <ClInclude Include="LobbyLevel.h" />
+    <ClInclude Include="NepPlayer.h" />
+    <ClInclude Include="Pencil.h" />
     <ClInclude Include="PressAnyKeyToStart.h" />
     <ClInclude Include="SplashLevel.h" />
+    <ClInclude Include="TextBook.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\Math.inl" />

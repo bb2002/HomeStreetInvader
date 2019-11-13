@@ -16,14 +16,15 @@ void SplashLevel::Initialize()
 	Logo->transform->SetPosition(640, 384);
 }
 
-auto CurrentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
-void SplashLevel::Update()
+float TimeLength = 0;
+void SplashLevel::UpdateWithDeltaSecond(float DeltaSec)
 {
-	auto Now = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
-	if ((Now - CurrentTime).count() > 3000) {
+	TimeLength += DeltaSec;
+	if (TimeLength > 3000) {
 		Scene::ChangeScene(new LobbyLevel());
 	}
 }
+
 
 SplashLevel::~SplashLevel()
 {

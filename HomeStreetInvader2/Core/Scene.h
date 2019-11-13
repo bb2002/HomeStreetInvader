@@ -37,6 +37,7 @@ public:
 	//생성자에서의 오브젝트의 생성 혹은 로드를 추천드리지 않습니다. (오류가 발생할 수 있습니다.)
 	virtual void Initialize() = 0;	//초기화	(순수 가상 함수),
 	virtual void Update();					//업데이트
+	virtual void UpdateWithDeltaSecond(float DeltaSec);	// Update with delta second.
 	void Render();					//렌더
 
 public:
