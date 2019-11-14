@@ -15,6 +15,10 @@ public:
 
 	void Initialize() override;
 
+	void SpawnBullet(TextBook* Bullet);
+
+	void SpawnBullet(Pencil* Bullet, Invader* self);
+
 	~GameLevel();
 
 private:

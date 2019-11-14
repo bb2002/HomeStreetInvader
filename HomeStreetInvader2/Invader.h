@@ -12,7 +12,7 @@ class Invader : public GameObject
 public:
 	Invader(EInvaderType InvaderType);
 
-	void SetInvaderPower(float Delay, float ShootNum);
+	void SetInvaderPower(float Delay);
 
 	virtual void Initialize();
 
@@ -29,15 +29,21 @@ public:
 
 	void StartInvader();
 
-	void Update() override;
+	void UpdateWithDelta(float DeltaTime) override;
 
 	~Invader();
 
 private:
 	bool bIsInvaderRunning = false;
 
-	int InvaderMoveVector = 0;
+	float InvaderMoveVector = 0;
 
-	int InvaderMovedSize = 0;
+	float InvaderMovedSize = 0;
+
+	float InvaderAttackDelay = 0;
+	float NextDelay = 0;
+	int InvaderLevel = 0;
+
+	EInvaderType InvaderType = EInvaderType::E_INVADER_1;
 };
 

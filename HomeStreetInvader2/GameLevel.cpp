@@ -33,11 +33,29 @@ void GameLevel::Initialize()
 
 			invader->transform->SetPosition(60 + i * 40, 60 + j * 40);
 			invader->transform->SetScale(0.5, 0.5);
+			invader->SetInvaderPower(3000000);
+			invader->StartInvader();
 		}
 	}
 
 	CurrentPlayer = (NepPlayer*)PushBackGameObject(new NepPlayer());
 	CurrentPlayer->transform->SetPosition(640, 600);
+}
+
+void GameLevel::SpawnBullet(TextBook * Bullet)
+{
+	Vector2 Pos = CurrentPlayer->transform->position;
+	Bullet->transform->SetPosition(Pos.x, Pos.y - 50);
+	PushBackGameObject(Bullet);
+	BulletOfTextBooks.push_back(Bullet);
+}
+
+void GameLevel::SpawnBullet(Pencil * Bullet, Invader* self)
+{
+	Vector2 Pos = self->transform->position;
+	Bullet->transform->SetPosition(Pos.x, Pos.y);
+	PushBackGameObject(Bullet);
+	BulletOfPencils.push_back(Bullet);
 }
 
 

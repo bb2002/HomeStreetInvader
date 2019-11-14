@@ -3,7 +3,12 @@
 class Pencil : public GameObject
 {
 public:
-	Pencil();
+	Pencil(float BulletSpeed);
+
+	void UpdateWithDelta(float DeltaTime) override;
+
+	float BulletSpeed = 0.0F;
+
 	~Pencil();
 };
 

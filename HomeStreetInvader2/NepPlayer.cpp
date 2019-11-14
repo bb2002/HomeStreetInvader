@@ -1,6 +1,8 @@
 #include "NepPlayer.h"
-#include "Core/InputManager.h"
 #include <iostream>
+#include "Core/InputManager.h"
+#include "Core/Scene.h"
+#include "GameLevel.h"
 
 #define KEY_W	0x57
 #define KEY_A	0x41
@@ -24,7 +26,6 @@ void NepPlayer::UpdateWithDelta(float DeltaSecond)
 		float X = DeltaSecond * CHARACTER_SPEED;
 		if (transform->position.x - X > 0) {
 			transform->SetPosition(transform->position.x - X, transform->position.y);
-			std::cout << "TRANSFORM- : " << transform->position.x << ", " << transform->position.y << std::endl;
 		}
 	}
 
@@ -32,11 +33,20 @@ void NepPlayer::UpdateWithDelta(float DeltaSecond)
 		float X = DeltaSecond * CHARACTER_SPEED;
 		if (transform->position.x + X < 1280) {
 			transform->SetPosition(transform->position.x + X, transform->position.y);
-			std::cout << "TRANSFORM+ : " << transform->position.x << ", " << transform->position.y << std::endl;
 		}
 	}
 
+	if (InputManager::GetKeyDown(VK_SPACE)) {
+		try {
+			GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
+			TextBook* NewBook = new TextBook();
 
+			CurrentLevel.SpawnBullet(NewBook);
+		}
+		catch (std::bad_cast& ex) {
+			std::cout << "[HSI Error] " << ex.what() << std::endl;
+		}
+	}
 }
 
 

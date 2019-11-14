@@ -5,6 +5,9 @@ class TextBook : public GameObject
 {
 public:
 	TextBook();
+
+	void UpdateWithDelta(float DeltaTime) override;
+
 	~TextBook();
 };
 
