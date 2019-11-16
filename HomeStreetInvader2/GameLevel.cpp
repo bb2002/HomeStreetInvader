@@ -31,15 +31,30 @@ void GameLevel::Initialize()
 			Invader* invader = (Invader*)PushBackGameObject(new Invader(SelectInvaderType(j)));
 			SpawnedInvaders.push_back(invader);
 
-			invader->transform->SetPosition(60 + i * 40, 60 + j * 40);
+			invader->transform->SetPosition(60.0F + i * 40.0F, 60.0F + j * 40.0F);
 			invader->transform->SetScale(0.5, 0.5);
-			invader->SetInvaderPower(3000000);
+			invader->Initialize();
 			invader->StartInvader();
 		}
 	}
 
 	CurrentPlayer = (NepPlayer*)PushBackGameObject(new NepPlayer());
 	CurrentPlayer->transform->SetPosition(640, 600);
+}
+
+int InvaderMovementVec = 30;		// 적들이 움직이는 속력과 방향
+float InvaderRelativeVec = 0.0F;	// 적들이 움직인 거리
+void GameLevel::UpdateWithDeltaSecond(float DeltaTime)
+{
+	float MoveSize = DeltaTime * InvaderMovementVec;
+	for (auto inv : SpawnedInvaders) {
+		inv->transform->SetPosition(inv->transform->position.x + MoveSize, inv->transform->position.y);
+	}
+	InvaderRelativeVec += MoveSize;
+
+	if (InvaderRelativeVec >= 50 || InvaderRelativeVec <= -50) {
+		InvaderMovementVec *= -1;
+	}
 }
 
 void GameLevel::SpawnBullet(TextBook * Bullet)
@@ -58,6 +73,39 @@ void GameLevel::SpawnBullet(Pencil * Bullet, Invader* self)
 	BulletOfPencils.push_back(Bullet);
 }
 
+
+void GameLevel::RemoveBullet(TextBook * Bullet)
+{
+	for (int i = 0; i < BulletOfTextBooks.size(); ++i) {
+		if (BulletOfTextBooks[i] == Bullet) {
+			BulletOfTextBooks.erase(BulletOfTextBooks.begin() + i);
+			Destroy(Bullet);
+			return;
+		}
+	}
+}
+
+void GameLevel::RemoveBullet(Pencil * Bullet)
+{
+	for (int i = 0; i < BulletOfPencils.size(); ++i) {
+		if (BulletOfPencils[i] == Bullet) {
+			BulletOfPencils.erase(BulletOfPencils.begin() + i);
+			Destroy(Bullet);
+			return;
+		}
+	}
+}
+
+void GameLevel::RemoveInvader(Invader * CurrentInvader)
+{
+	for (int i = 0; i < SpawnedInvaders.size(); ++i) {
+		if (SpawnedInvaders[i] == CurrentInvader) {
+			SpawnedInvaders.erase(SpawnedInvaders.begin() + i);
+			Destroy(CurrentInvader);
+			return;
+		}
+	}
+}
 
 GameLevel::~GameLevel()
 {

@@ -45,25 +45,20 @@ void LobbyLevel::Initialize()
 	//BackgroundSound->Play();
 }
 
-long double BeforeFrameSec = time(0);
-float CurrentPos = 650;
-void LobbyLevel::Update()
+
+int CurrentPos = 650;
+float DurationTime = 0.0F;
+void LobbyLevel::UpdateWithDeltaSecond(float DeltaSec)
 {
-	Scene::Update();
+	DurationTime += DeltaSec;
 
-	long double DeltaSecond = time(0) - BeforeFrameSec;
-	BeforeFrameSec = time(0);
-
-	if (DeltaSecond >= 1) {
+	if (DurationTime > 1.0F) {
+		DurationTime = 0.0F;
+		CurrentPos *= -1;
 		paktsView->transform->SetPosition(640, CurrentPos);
-		if (CurrentPos == 650) {
-			CurrentPos = -100;
-		}
-		else {
-			CurrentPos = 650;
-		}
 	}
 }
+
 
 
 LobbyLevel::~LobbyLevel()

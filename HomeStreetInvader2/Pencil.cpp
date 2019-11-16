@@ -1,7 +1,6 @@
 #include "Pencil.h"
 #include "GameLevel.h"
 
-
 Pencil::Pencil(float BulletSpeed) : GameObject(L"./Resources/BulletOfPencil.png")
 {
 	this->BulletSpeed = BulletSpeed;
@@ -9,18 +8,20 @@ Pencil::Pencil(float BulletSpeed) : GameObject(L"./Resources/BulletOfPencil.png"
 
 void Pencil::UpdateWithDelta(float DeltaTime)
 {
+	// Bullet Movement
 	float y = transform->position.y;
-	y += BulletSpeed * (DeltaTime / 1000);
+	y += BulletSpeed * DeltaTime;
 	transform->SetPosition(transform->position.x, y);
 
-	if (y > 720) {
-		try {
-			GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
-			CurrentLevel.Destroy(this);
-		}
-		catch (std::bad_cast& ex) {
-			std::cout << "[HSI Error] " << ex.what() << std::endl;
-		}
+	GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
+
+	// Check Out of world.
+	if (y > 720) CurrentLevel.RemoveBullet(this);
+
+	// Check Character Collision
+	if (Collision.Intersected(CurrentLevel.GetCurrentPlayer()->GetCollision())) {
+		std::cout << "PLAYER DEAD!" << std::endl;
+		CurrentLevel.RemoveBullet(this);
 	}
 }
 

@@ -20,8 +20,6 @@ NepPlayer::NepPlayer() : GameObject(L"./Resources/Player.png")
 
 void NepPlayer::UpdateWithDelta(float DeltaSecond)
 {
-	DeltaSecond /= 1000;
-
 	if (InputManager::GetKeyPressed(KEY_A)) {
 		float X = DeltaSecond * CHARACTER_SPEED;
 		if (transform->position.x - X > 0) {
@@ -37,15 +35,9 @@ void NepPlayer::UpdateWithDelta(float DeltaSecond)
 	}
 
 	if (InputManager::GetKeyDown(VK_SPACE)) {
-		try {
-			GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
-			TextBook* NewBook = new TextBook();
-
-			CurrentLevel.SpawnBullet(NewBook);
-		}
-		catch (std::bad_cast& ex) {
-			std::cout << "[HSI Error] " << ex.what() << std::endl;
-		}
+		GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
+		TextBook* NewBook = new TextBook();
+		CurrentLevel.SpawnBullet(NewBook);
 	}
 }
 

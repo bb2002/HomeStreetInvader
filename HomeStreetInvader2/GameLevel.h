@@ -15,9 +15,25 @@ public:
 
 	void Initialize() override;
 
+	void UpdateWithDeltaSecond(float DeltaTime) override;
+
 	void SpawnBullet(TextBook* Bullet);
 
 	void SpawnBullet(Pencil* Bullet, Invader* self);
+
+	inline std::vector<Invader*>& GetInvaders() {
+		return SpawnedInvaders;
+	}
+
+	inline NepPlayer* GetCurrentPlayer() {
+		return CurrentPlayer;
+	}
+
+	void RemoveBullet(TextBook* Bullet);
+
+	void RemoveBullet(Pencil* Bullet);
+
+	void RemoveInvader(Invader* CurrentInvader);
 
 	~GameLevel();
 

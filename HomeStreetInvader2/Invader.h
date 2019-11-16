@@ -1,5 +1,6 @@
 #pragma once
 #include "Core/GameObject.h"
+#include "Core/AABBCollider.h"
 
 enum class EInvaderType : int {
 	E_INVADER_1 = 0,
@@ -11,8 +12,6 @@ class Invader : public GameObject
 {
 public:
 	Invader(EInvaderType InvaderType);
-
-	void SetInvaderPower(float Delay);
 
 	virtual void Initialize();
 
@@ -31,18 +30,20 @@ public:
 
 	void UpdateWithDelta(float DeltaTime) override;
 
+	inline AABBCollider& GetCollision() {
+		return Collision;
+	}
+
 	~Invader();
 
 private:
 	bool bIsInvaderRunning = false;
 
-	float InvaderMoveVector = 0;
-
-	float InvaderMovedSize = 0;
-
 	float InvaderAttackDelay = 0;
 	float NextDelay = 0;
 	int InvaderLevel = 0;
+
+	AABBCollider Collision = AABBCollider(*transform, Vector2(60.0F, 60.0F));
 
 	EInvaderType InvaderType = EInvaderType::E_INVADER_1;
 };

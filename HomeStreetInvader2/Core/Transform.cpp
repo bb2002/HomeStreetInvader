@@ -22,6 +22,12 @@ void Transform::SetPosition(float x, float y)
 	position.y = y;
 }
 
+void Transform::SetPosition(int x, int y)
+{
+	position.x = (float)x;
+	position.y = (float)y;
+}
+
 void Transform::SetRotation(float angle)
 {
 	rotatingAngle = angle;

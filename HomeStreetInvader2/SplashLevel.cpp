@@ -20,7 +20,7 @@ float TimeLength = 0;
 void SplashLevel::UpdateWithDeltaSecond(float DeltaSec)
 {
 	TimeLength += DeltaSec;
-	if (TimeLength > 3000) {
+	if (TimeLength > 3) {
 		Scene::ChangeScene(new LobbyLevel());
 	}
 }

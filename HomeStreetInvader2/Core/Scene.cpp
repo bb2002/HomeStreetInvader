@@ -52,36 +52,35 @@ Scene& Scene::GetCurrentScene()
 	return *Scene::currentScene;
 }
 
-auto CurrentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
+auto GetCurrentTimeMilliSecond = []() -> long long {
+	return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+};
+
+// 이전 틱에 대한 시간
+long long BeforeTickMillisecond = GetCurrentTimeMilliSecond();
+
 void Scene::Update()
 {
-	auto Now = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
-	//모든 오브젝트의 Update를 수행
+	// Update.
+	long long UpdateStartTime = GetCurrentTimeMilliSecond();
+
 	for (auto& i : gameObjectList) {
 		if (i->GetActive()) {
 			i->Update();
-			i->UpdateWithDelta((Now - CurrentTime).count());
+			i->UpdateWithDelta((UpdateStartTime - BeforeTickMillisecond) / 1000.0F);
 		}
 	}
-
-	UpdateWithDeltaSecond((Now - CurrentTime).count());
-	CurrentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 
 	//LateUpdate 수행
 	for (auto& i : gameObjectList)
 		if (i->GetActive())
 			i->LateUpdate();
 
-	//삭제 요청받은 오브젝트를 삭제함.
-	//for (auto i = destroyedObjectList.begin(); i != destroyedObjectList.end(); ++i)
-	//{
-	//	(*i)->OnDestroy();				//삭제시 호출될 함수
+	// Scene 의 Delta Update 실행.
 
-	//	gameObjectList.remove(*i);		//게임오브젝트리스트에서 삭제
-	//	renderableList.remove(*i);		//렌더러블 리스트에서 삭제
-	//	SAFE_DELETE(*i);				//delete
-	//}
-	//destroyedObjectList.clear();
+	UpdateStartTime = GetCurrentTimeMilliSecond();
+	UpdateWithDeltaSecond((UpdateStartTime - BeforeTickMillisecond) / 1000.0F);
+
 	auto i = destroyedObjectList.begin();
 	while (i != destroyedObjectList.end())
 	{
@@ -94,6 +93,8 @@ void Scene::Update()
 		i = destroyedObjectList.begin();
 	}
 	destroyedObjectList.clear();
+
+	BeforeTickMillisecond = GetCurrentTimeMilliSecond();
 }
 
 void Scene::UpdateWithDeltaSecond(float DeltaSec)

@@ -23,6 +23,7 @@ public:
 
 public:
 	void SetPosition(float x, float y);
+	void SetPosition(int x, int y);
 	void SetRotation(float angle);
 	void SetScale(float x, float y);
 };
