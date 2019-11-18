@@ -8,6 +8,7 @@
 //다이렉트x 관련 헤더
 #include <d2d1.h>
 #include <d2d1helper.h>
+#include <dwrite.h>
 
 //COM
 #include <wincodec.h>
@@ -19,6 +20,7 @@
 #include <mfreadwrite.h>
 
 #pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "Dwrite.lib")
 #pragma comment(lib, "WindowsCodecs.lib")
 #pragma comment(lib, "Winmm.lib")
 

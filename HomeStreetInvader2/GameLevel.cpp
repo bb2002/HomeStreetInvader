@@ -1,5 +1,5 @@
 #include "GameLevel.h"
-
+#include "GameOverLevel.h"
 
 
 GameLevel::GameLevel()
@@ -102,6 +102,12 @@ void GameLevel::RemoveInvader(Invader * CurrentInvader)
 		if (SpawnedInvaders[i] == CurrentInvader) {
 			SpawnedInvaders.erase(SpawnedInvaders.begin() + i);
 			Destroy(CurrentInvader);
+
+			if (SpawnedInvaders.size() == 0) {
+				// Player win!
+				Scene::ChangeScene(new GameOverLevel(true, CurrentPlayer->GetPlayerScore(), CurrentPlayer->GetPlayTime()));
+			}
+
 			return;
 		}
 	}

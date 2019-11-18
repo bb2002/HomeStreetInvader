@@ -3,6 +3,7 @@
 #include "Core/InputManager.h"
 #include "Core/Scene.h"
 #include "GameLevel.h"
+#include "GameOverLevel.h"
 
 #define KEY_W	0x57
 #define KEY_A	0x41
@@ -39,6 +40,16 @@ void NepPlayer::UpdateWithDelta(float DeltaSecond)
 		TextBook* NewBook = new TextBook();
 		CurrentLevel.SpawnBullet(NewBook);
 	}
+
+	PlayTime += DeltaSecond;
+}
+
+void NepPlayer::YouDie()
+{
+	Scene& CurrentScene = Scene::GetCurrentScene();
+	CurrentScene.Destroy(this);
+
+	Scene::ChangeScene(new GameOverLevel(false, PlayerScore, PlayTime));
 }
 
 

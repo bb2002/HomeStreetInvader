@@ -126,6 +126,9 @@
     <ClCompile Include="Core\Collision.cpp" />
     <ClCompile Include="Core\Component.cpp" />
     <ClCompile Include="Core\D2DApp.cpp" />
+    <ClCompile Include="Core\Font.cpp" />
+    <ClCompile Include="Core\FontObject.cpp" />
+    <ClCompile Include="Core\FontRenderer.cpp" />
     <ClCompile Include="Core\Framework.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
@@ -139,6 +142,7 @@
     <ClCompile Include="Core\Transform.cpp" />
     <ClCompile Include="Core\WinApp.cpp" />
     <ClCompile Include="GameLevel.cpp" />
+    <ClCompile Include="GameOverLevel.cpp" />
     <ClCompile Include="HomeStreetInvader.cpp" />
     <ClCompile Include="HomeStreetInvaderLogo.cpp" />
     <ClCompile Include="Invader.cpp" />
@@ -146,8 +150,10 @@
     <ClCompile Include="NepPlayer.cpp" />
     <ClCompile Include="Pencil.cpp" />
     <ClCompile Include="PressAnyKeyToStart.cpp" />
+    <ClCompile Include="ScoreFontView.cpp" />
     <ClCompile Include="SplashLevel.cpp" />
     <ClCompile Include="TextBook.cpp" />
+    <ClCompile Include="YouDieBackgroundActor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackgroundActor.h" />
@@ -160,6 +166,9 @@
     <ClInclude Include="Core\Collision.h" />
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\D2DApp.h" />
+    <ClInclude Include="Core\Font.h" />
+    <ClInclude Include="Core\FontObject.h" />
+    <ClInclude Include="Core\FontRenderer.h" />
     <ClInclude Include="Core\Framework.h" />
     <ClInclude Include="Core\GameObject.h" />
     <ClInclude Include="Core\InputManager.h" />
@@ -175,14 +184,17 @@
     <ClInclude Include="Core\Transform.h" />
     <ClInclude Include="Core\WinApp.h" />
     <ClInclude Include="GameLevel.h" />
+    <ClInclude Include="GameOverLevel.h" />
     <ClInclude Include="HomeStreetInvaderLogo.h" />
     <ClInclude Include="Invader.h" />
     <ClInclude Include="LobbyLevel.h" />
     <ClInclude Include="NepPlayer.h" />
     <ClInclude Include="Pencil.h" />
     <ClInclude Include="PressAnyKeyToStart.h" />
+    <ClInclude Include="ScoreFontView.h" />
     <ClInclude Include="SplashLevel.h" />
     <ClInclude Include="TextBook.h" />
+    <ClInclude Include="YouDieBackgroundActor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\Math.inl" />

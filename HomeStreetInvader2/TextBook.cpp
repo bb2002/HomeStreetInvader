@@ -30,6 +30,9 @@ void TextBook::UpdateWithDelta(float DeltaTime)
 		if (Collision.Intersected(i->GetCollision())) {
 			CurrentLevel.RemoveBullet(this);
 			CurrentLevel.RemoveInvader(i);
+
+			// Get Score.
+			CurrentLevel.GetCurrentPlayer()->IncreaseScore();
 		}
 	}
 }

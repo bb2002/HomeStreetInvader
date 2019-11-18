@@ -20,7 +20,7 @@ void Pencil::UpdateWithDelta(float DeltaTime)
 
 	// Check Character Collision
 	if (Collision.Intersected(CurrentLevel.GetCurrentPlayer()->GetCollision())) {
-		std::cout << "PLAYER DEAD!" << std::endl;
+		CurrentLevel.GetCurrentPlayer()->YouDie();
 		CurrentLevel.RemoveBullet(this);
 	}
 }
