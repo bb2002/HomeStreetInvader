@@ -11,9 +11,27 @@ void GameOverLevel::Initialize()
 	this->Background = (YouDieBackgroundActor*) PushBackGameObject(new YouDieBackgroundActor(!isWin));
 	this->Background->transform->SetPosition(640, 360);
 
+	// calc score.
+	if (isWin) {
+		// win 이면 가산점
+		score = score * 100 / PlayTime;
+	}
+
 	this->ScoreView = (ScoreFontView*)PushBackGameObject(new ScoreFontView(score));
 	this->ScoreView->transform->SetPosition(620, 50);
 
+	BackgroundMusic->Stop();
+
+	if (isWin) {
+		if (WinSound != nullptr) {
+			WinSound->Play();
+		}
+	}
+	else {
+		if (DefectSound != nullptr) {
+			DefectSound->Play();
+		}
+	}
 }
 
 float Time = 0.0F;

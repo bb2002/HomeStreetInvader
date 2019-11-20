@@ -33,7 +33,7 @@ public:
 
 	void RemoveBullet(Pencil* Bullet);
 
-	void RemoveInvader(Invader* CurrentInvader);
+	void RemoveInvader(Invader* CurrentInvader, bool isForceMode = false);
 
 	~GameLevel();
 

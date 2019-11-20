@@ -1,5 +1,6 @@
 #include "LobbyLevel.h"
 #include <ctime>
+#include "SoundPool.h"
 
 LobbyLevel::LobbyLevel()
 {
@@ -40,9 +41,10 @@ void LobbyLevel::Initialize()
 	paktsView->transform->SetPosition(640, 650);
 
 	// Play Background Music!
-	//BackgroundSound = new SoundEvent();
-	//BackgroundSound->LoadFile(L"./Resources/Hibikase.mp3");
-	//BackgroundSound->Play();
+	if (BackgroundMusic != nullptr) {
+		BackgroundMusic->Stop();
+		BackgroundMusic->Play();
+	}
 }
 
 

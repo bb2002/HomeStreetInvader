@@ -96,12 +96,16 @@ void GameLevel::RemoveBullet(Pencil * Bullet)
 	}
 }
 
-void GameLevel::RemoveInvader(Invader * CurrentInvader)
+void GameLevel::RemoveInvader(Invader * CurrentInvader, bool isForceMode)
 {
 	for (int i = 0; i < SpawnedInvaders.size(); ++i) {
 		if (SpawnedInvaders[i] == CurrentInvader) {
 			SpawnedInvaders.erase(SpawnedInvaders.begin() + i);
 			Destroy(CurrentInvader);
+			if (!isForceMode) {
+				InvaderDead->Stop();
+				InvaderDead->Play();
+			}
 
 			if (SpawnedInvaders.size() == 0) {
 				// Player win!

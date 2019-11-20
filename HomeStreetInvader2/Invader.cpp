@@ -16,13 +16,13 @@ void Invader::Initialize()
 {
 	switch (InvaderType) {
 	case EInvaderType::E_INVADER_1:
-		InvaderLevel = 100;
+		InvaderLevel = 70;
 		break;
 	case EInvaderType::E_INVADER_2:
-		InvaderLevel = 60;
+		InvaderLevel = 50;
 		break;
 	case EInvaderType::E_INVADER_3:
-		InvaderLevel = 10;
+		InvaderLevel = 30;
 		break;
 	}
 
@@ -44,9 +44,14 @@ void Invader::UpdateWithDelta(float DeltaTime)
 
 		if (NextDelay < 0) {
 			GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
-			Pencil* NewPencil = new Pencil(std::rand() % 100 + 500.0F);
+			Pencil* NewPencil = new Pencil(std::rand() % 100 + 550.0F);
 			CurrentLevel.SpawnBullet(NewPencil, this);
 			NextDelay = (float) (std::rand() % InvaderLevel);
+
+			if (InvaderShoot != nullptr) {
+				InvaderShoot->Stop();
+				InvaderShoot->Play();
+			}
 		}
 	}
 }

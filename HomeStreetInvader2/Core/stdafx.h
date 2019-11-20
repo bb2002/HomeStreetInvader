@@ -29,6 +29,7 @@
 #pragma comment (lib, "mfreadwrite.lib")
 #pragma comment (lib, "mfplat.lib")
 #pragma comment (lib, "mfuuid")
+#include "../SoundPool.h"
 
 
 #define SAFE_RELEASE(p) { if(p){p->Release();} p=NULL; }

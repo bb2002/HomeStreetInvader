@@ -138,6 +138,9 @@
     <ClCompile Include="ScoreFontView.cpp">
       <Filter>소스 파일\HomeStreetInvader</Filter>
     </ClCompile>
+    <ClCompile Include="SoundPool.cpp">
+      <Filter>소스 파일\HomeStreetInvader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\AABBCollider.h">
@@ -255,6 +258,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ScoreFontView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundPool.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

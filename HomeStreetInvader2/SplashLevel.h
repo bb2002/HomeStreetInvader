@@ -1,6 +1,8 @@
 #pragma once
 #include "Core/Scene.h"
 #include "HomeStreetInvaderLogo.h"
+#include "SoundPool.h"
+
 
 class SplashLevel :
 	public Scene
@@ -17,5 +19,8 @@ public:
 
 private:
 	HomeStreetInvaderLogo* Logo;
+
+	bool isLoadEnd = false;
 };
 
+void LoadAudioAssets(SoundEvent**, SoundEvent**, SoundEvent**, SoundEvent**, SoundEvent**, SoundEvent**, SoundEvent**, bool*) noexcept;

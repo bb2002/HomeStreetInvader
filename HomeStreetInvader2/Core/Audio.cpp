@@ -176,7 +176,7 @@ void Audio::LoadFile(const wchar_t * path, std::vector<BYTE>& audioData, WAVEFOR
 			printf("erroccured\n");
 		}
 
-		for (size_t i = 0; i < localAudioDataLength; i++)
+		for (size_t i = 0; i < localAudioDataLength; ++i)
 			audioData.push_back(localAudioData[i]);
 
 		//버퍼 잠금 해제

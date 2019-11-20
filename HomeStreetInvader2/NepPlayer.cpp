@@ -39,6 +39,18 @@ void NepPlayer::UpdateWithDelta(float DeltaSecond)
 		GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
 		TextBook* NewBook = new TextBook();
 		CurrentLevel.SpawnBullet(NewBook);
+
+		if (NeptuneShoot != nullptr) {
+			NeptuneShoot->Stop();
+			NeptuneShoot->Play();
+		}
+	}
+
+	// MACRO
+	if (InputManager::GetKeyDown(VK_DELETE)) {
+		GameLevel& CurrentLevel = dynamic_cast<GameLevel&>(Scene::GetCurrentScene());
+		for (auto a : CurrentLevel.GetInvaders())
+			CurrentLevel.RemoveInvader(a, true);
 	}
 
 	PlayTime += DeltaSecond;
@@ -48,6 +60,7 @@ void NepPlayer::YouDie()
 {
 	Scene& CurrentScene = Scene::GetCurrentScene();
 	CurrentScene.Destroy(this);
+	PlayerDeadSound->Play();
 
 	Scene::ChangeScene(new GameOverLevel(false, PlayerScore, PlayTime));
 }

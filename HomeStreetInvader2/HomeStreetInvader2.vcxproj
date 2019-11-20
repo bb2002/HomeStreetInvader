@@ -151,6 +151,7 @@
     <ClCompile Include="Pencil.cpp" />
     <ClCompile Include="PressAnyKeyToStart.cpp" />
     <ClCompile Include="ScoreFontView.cpp" />
+    <ClCompile Include="SoundPool.cpp" />
     <ClCompile Include="SplashLevel.cpp" />
     <ClCompile Include="TextBook.cpp" />
     <ClCompile Include="YouDieBackgroundActor.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Pencil.h" />
     <ClInclude Include="PressAnyKeyToStart.h" />
     <ClInclude Include="ScoreFontView.h" />
+    <ClInclude Include="SoundPool.h" />
     <ClInclude Include="SplashLevel.h" />
     <ClInclude Include="TextBook.h" />
     <ClInclude Include="YouDieBackgroundActor.h" />
